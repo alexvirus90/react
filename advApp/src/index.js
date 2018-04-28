@@ -1,8 +1,9 @@
 import React from 'react'
 import {render} from 'react-dom'
-import Root from './components/Root'
+import Article from './Article'
+import {articles} from "./fixtures"
 
 render(
-	<Root />,
+	<Article article = {articles[0]}/>,
 	document.getElementById('container')
 )
