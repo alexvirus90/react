@@ -3,6 +3,10 @@ import Comment from './Comment'
 
 class CommentList extends Component {
 
+	/*static defaultProps = {
+		comments: []
+	}*/
+
 	constructor(props) {
 		super(props);
 
@@ -14,7 +18,6 @@ class CommentList extends Component {
 	render(){
 		const {comments = []} = this.props;
 		const {isOpen} = this.state;
-
 		const commentElements = comments.map((comment,index) =>
 
 			<li data = {index} key = {comment.id}>
@@ -28,7 +31,6 @@ class CommentList extends Component {
 	}
 
 	showComments(commentElements){
-
 		return(
 			<div>
 				{commentElements.length > 0 &&

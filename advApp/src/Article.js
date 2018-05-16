@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import CommentList from './CommentList';
 
 class Article extends Component{
+	static propTypes = {
+		article: PropTypes.object.isRequired
+	}
+
 	constructor(props){
 		super(props);
 
