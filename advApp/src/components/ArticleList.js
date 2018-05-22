@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Article from './Article'
 
-function ArticleList({articles}) {
+export default function ArticleList({articles}) {
 	const articleElements = articles.map((article) =>
 		<li key={article.id}>
 			<Article article = {article}/>
@@ -14,4 +14,3 @@ function ArticleList({articles}) {
 		</ul>
 	)
 }
-export default ArticleList
