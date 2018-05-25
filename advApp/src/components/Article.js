@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
 import PropTypes from 'prop-types'
 import CommentList from './CommentList';
-import toggleOpen from '../decorators/toggleOpen'
 
 class Article extends Component{
 	static propTypes = {
@@ -10,8 +9,10 @@ class Article extends Component{
 			id: PropTypes.string.isRequired,
 			title: PropTypes.string.isRequired,
 			text: PropTypes.string
-		}).isRequired
-	};
+		}).isRequired,
+		isOpen: PropTypes.bool,
+		toggleOpen: PropTypes.func
+	}
 
 	componentWillReceiveProps(nextProps){
 		console.log('updating', this.props.isOpen, nextProps.isOpen);
@@ -31,7 +32,6 @@ class Article extends Component{
 					{isOpen ? 'Close' : 'Open'}
 				</button>
 				{this.getBody()}
-				{this.showComments()}
 			</div>
 		)
 	}
@@ -48,18 +48,16 @@ class Article extends Component{
 	getBody = () =>{
 		const {article, isOpen} = this.props;
 		if (!isOpen) return null;
-		return <section>{article.text}</section>
+		return (
+			<section>
+				{article.text}
+				<CommentList comments = {article.comments} ref = {this.setCommentsRef} />
+			</section>
+		)
 	};
 
-	showComments(){
-		const {article, isOpen} = this.props;
-
-		if(!isOpen) return null;
-		return <CommentList comments = {article.comments} ref = {this.setCommentsRef} />
-	}
-
 	setCommentsRef = ref => {
-		console.log('', findDOMNode(ref));
+		// console.log('', findDOMNode(ref));
 	}
 }
 
