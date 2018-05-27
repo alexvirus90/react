@@ -14,16 +14,26 @@ class Article extends Component{
 		toggleOpen: PropTypes.func
 	}
 
-	componentWillReceiveProps(nextProps){
-		console.log('updating', this.props.isOpen, nextProps.isOpen);
+	state = {
+		updateIndex: 0
 	}
 
-	componentWillMount(){
-		console.log('mounting', );
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.isOpen !== this.props.isOpen
 	}
+
+	// componentWillReceiveProps(nextProps){
+	// 	console.log('updating', this.props.isOpen, nextProps.isOpen);
+	// }
+
+	// componentWillMount(){
+	// 	console.log('mounting', );
+	// }
 
 	render() {
 		const {article, isOpen, toggleOpen} = this.props;
+
+		console.log('update article', );
 
 		return (
 			<div ref={this.setContainerRef}>
@@ -41,17 +51,14 @@ class Article extends Component{
 		console.log('----', ref)
 	}
 
-	componentDidMount(){
-		console.log('mounted', );
-	}
-
 	getBody = () =>{
 		const {article, isOpen} = this.props;
 		if (!isOpen) return null;
 		return (
 			<section>
 				{article.text}
-				<CommentList comments = {article.comments} ref = {this.setCommentsRef} />
+				<button onClick={() => this.setState({updateIndex: this.state.updateIndex + 1})}>Update</button>
+				<CommentList comments = {article.comments} ref = {this.setCommentsRef} key = {this.state.updateIndex} />
 			</section>
 		)
 	};
