@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, {Component, PureComponent} from 'react'
 import {findDOMNode} from 'react-dom'
 import PropTypes from 'prop-types'
 import CommentList from './CommentList';
 
-class Article extends Component{
+class Article extends PureComponent {
 	static propTypes = {
 		article: PropTypes.shape({
 			id: PropTypes.string.isRequired,
@@ -11,16 +11,16 @@ class Article extends Component{
 			text: PropTypes.string
 		}).isRequired,
 		isOpen: PropTypes.bool,
-		toggleOpen: PropTypes.func
+		toggleOpen: PropTypes.funck
 	}
 
 	state = {
 		updateIndex: 0
 	}
 
-	shouldComponentUpdate(nextProps, nextState) {
+	/*shouldComponentUpdate(nextProps, nextState) {
 		return nextProps.isOpen !== this.props.isOpen
-	}
+	}*/
 
 	// componentWillReceiveProps(nextProps){
 	// 	console.log('updating', this.props.isOpen, nextProps.isOpen);
