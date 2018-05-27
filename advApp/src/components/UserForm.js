@@ -20,6 +20,8 @@ class UserForm extends Component {
 	}
 
 	handleUserChange = (ev) => {
+		if(ev.target.value.length > 10) return; // ограничение по количеству введенных символов в input
+
 		this.setState({
 			username: ev.target.value
 		})
