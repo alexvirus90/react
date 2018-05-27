@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 
 class UserForm extends Component {
 
-	static PropTypes = {
-
-	}
+	static PropTypes = {};
 
 	state = {
 		username: ''
-	}
+	};
 
 	render() {
 		return (
