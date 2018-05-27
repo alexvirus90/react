@@ -11,7 +11,7 @@ class Article extends PureComponent {
 			text: PropTypes.string
 		}).isRequired,
 		isOpen: PropTypes.bool,
-		toggleOpen: PropTypes.funck
+		toggleOpen: PropTypes.func
 	}
 
 	state = {
@@ -33,7 +33,7 @@ class Article extends PureComponent {
 	render() {
 		const {article, isOpen, toggleOpen} = this.props;
 
-		console.log('update article', );
+		// console.log('update article', );
 
 		return (
 			<div ref={this.setContainerRef}>
@@ -48,11 +48,13 @@ class Article extends PureComponent {
 
 	setContainerRef = ref => {
 		this.container = ref;
-		console.log('----', ref)
+		// console.log('----', ref)
 	}
 
 	getBody = () =>{
 		const {article, isOpen} = this.props;
+		console.log('upd', );
+
 		if (!isOpen) return null;
 		return (
 			<section>
