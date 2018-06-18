@@ -26,7 +26,7 @@ function getBody({comments, isOpen}) {
 	if (!comments.length) return (
 		<div>
 			<p>No comments yet</p>
-			<CommentForm/>
+			<CommentForm />
 		</div>
 	)
 	return (
@@ -34,7 +34,7 @@ function getBody({comments, isOpen}) {
 			< ul>
 				{comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
 			</ul>
-			< CommentForm/>
+			<CommentForm />
 		</ div>
 	)
 }
